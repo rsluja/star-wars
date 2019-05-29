@@ -1,0 +1,21 @@
+<mat-dialog-content >
+  <p *ngFor="let basic of person">
+    {{basic | detailInfo:basic}}
+  </p>
+  <button mat-button (click)="show()">show</button>
+  <mat-card>
+    <ul *ngFor="let details of detailsDataEntries">
+      <li> {{details }}
+      </li>
+    </ul>
+   
+
+  </mat-card>
+
+
+  <mat-dialog-actions styles="align:center">
+    <button mat-raised-button (click)="close()">Close</button>
+    <button mat-raised-button (click)="openPrevious()">Previous</button>
+    <button mat-raised-button (click)="openNext()">Next</button>
+  </mat-dialog-actions> 
+</mat-dialog-content>

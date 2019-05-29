@@ -1,0 +1,8 @@
+<app-overview [dataSource] = "people[currentPage]"
+              [columnDefinition] = "displayedColumns"
+              [currentPage] = "currentPage"
+              (page)="handleChange($event)"
+              (change)="openDialog($event)">
+</app-overview> 
+
+<router-outlet></router-outlet>

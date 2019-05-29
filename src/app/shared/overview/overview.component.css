@@ -1,0 +1,32 @@
+mat-spinner {
+    position: relative;
+    margin-left: 50%;
+    margin-right: 50%;
+}
+
+mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+.mat-table {
+   opacity:0.5
+}
+
+.mat-row:nth-child(even){
+  background-color:black;
+}
+
+.mat-row:nth-child(odd){
+    background-color:gray;
+}
+
+.mat-header-row:nth-child(odd){
+    background-color:gray;
+}
+.mat-cell {
+    color: darkgoldenrod
+}
+.mat-header-cell {
+    color: white;
+}

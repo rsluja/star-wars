@@ -1,0 +1,6 @@
+<app-overview [dataSource] = "planets[currentPage]"
+              [columnDefinition] = "displayedColumns"
+              [currentPage] = "currentPage"
+              (page)="handleChange($event)"
+              (change)="openDialog($event)">
+</app-overview> 
