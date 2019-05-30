@@ -33,7 +33,8 @@ export class StarshipsComponent implements OnInit {
     this.selectedRow = $event;
    
     this.starshipsDetailsDialogRef = this.dialog.open(StarshipsDetailsComponent, {
-      data: {results: this.starships[this.currentPage].results, index: this.selectedRow}
+      data: {results: this.starships[this.currentPage].results, index: this.selectedRow},
+      panelClass: 'my-panel'
     });
 
     this.starshipsDetailsDialogRef.afterClosed().subscribe(() => {
@@ -54,7 +55,6 @@ export class StarshipsComponent implements OnInit {
         this.saveStarshipsDataObjectInLocalStorage(page)
 
         this.starships[this.currentPage].results.forEach(element => {
-          console.log("url",element.url);
            this.saveInLocalStorage(element, element.url);
         });
       });
@@ -65,14 +65,10 @@ export class StarshipsComponent implements OnInit {
   }
 
   private getData() {
-    console.log("getData: this.data[this.currentPage]: ",this.starships[this.currentPage]);
-    console.log("getData: this.data: ",this.starships)
     return this.starships[this.currentPage];
   }
 
   private saveInLocalStorage(element, url) {
-    console.log("1element: ", element)  
-    console.log("1url: ", url)  
     localStorage.setItem(url, JSON.stringify(element));
   }
 

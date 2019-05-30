@@ -32,7 +32,8 @@ export class VehicleComponent implements OnInit {
     this.selectedRow = $event;
    
     this.vehicleDetailsDialogRef = this.dialog.open(VehicleDetailsComponent, {
-      data: {results: this.vehicles[this.currentPage].results, index: this.selectedRow}
+      data: {results: this.vehicles[this.currentPage].results, index: this.selectedRow},
+      panelClass: 'my-panel'
     });
 
     this.vehicleDetailsDialogRef.afterClosed().subscribe(() => {
@@ -54,7 +55,6 @@ export class VehicleComponent implements OnInit {
         this.saveVechiclesDataObjectInLocalStorage(page)
 
         this.vehicles[this.currentPage].results.forEach(element => {
-          console.log("url",element.url);
            this.saveInLocalStorage(element, element.url);
         });
       });
@@ -65,15 +65,10 @@ export class VehicleComponent implements OnInit {
   }
 
   private getData() {
-    console.log("getData: this.data[this.currentPage]: ",this.vehicles[this.currentPage]);
-    console.log("getData: this.data: ",this.vehicles)
     return this.vehicles[this.currentPage];
    }
 
-  
    private saveInLocalStorage(element, url) {
-    console.log("1element: ", element)  
-    console.log("1url: ", url)  
     localStorage.setItem(url, JSON.stringify(element));
   }
 

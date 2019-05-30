@@ -73,7 +73,6 @@ import { PeopleRoutingModule } from './starwars/people/people-routing.module';
     MatFormFieldModule,
     MatInputModule
   ],
-  // providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}],
   entryComponents: [
     PeopleDetailsComponent
   ],

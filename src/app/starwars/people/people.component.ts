@@ -2,6 +2,8 @@ import { Component,  OnInit, Input } from '@angular/core';
 import {MatDialog, MatDialogRef, MatDialogConfig} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { PeopleDetailsComponent } from './people-details/people-details.component';
+import { Person } from 'src/app/shared/interface/person';
+import { ApiResponse } from 'src/app/shared/interface/api-response';
 
 @Component({
   selector: 'app-people',
@@ -14,11 +16,9 @@ export class PeopleComponent implements OnInit {
   selectedRow = 0;
   currentPage = 1;
   displayedColumns: string[] = [
-    'name', 'hair_color', 'height', 'mass'
+    'name', 'birth_year', 'gender'
   ];
   
-
-
   personDetailsDialogRef: MatDialogRef<PeopleDetailsComponent>;
 
   constructor(public dialog: MatDialog,
@@ -31,11 +31,12 @@ export class PeopleComponent implements OnInit {
     this.fetchPage(this.currentPage);
   }
 
-  openDialog($event): void {
+  openDialog($event, selectedRow?, component?:any,  dialogRef?:any): void {
     this.selectedRow = $event;
    
     this.personDetailsDialogRef = this.dialog.open(PeopleDetailsComponent, {
-      data: {results: this.people[this.currentPage].results, index: this.selectedRow}
+      data: {results: this.people[this.currentPage].results as Person, index: this.selectedRow},
+      panelClass: 'my-panel'
     });
 
     this.personDetailsDialogRef.afterClosed().subscribe(() => {
@@ -50,7 +51,7 @@ export class PeopleComponent implements OnInit {
     if (this.getData() !== undefined) {
       return;
     }
-    this.http.get(`https://swapi.co/api/${category}/?page=${page}`).subscribe(response => {
+    this.http.get<ApiResponse[]>(`https://swapi.co/api/${category}/?page=${page}`).subscribe(response => {
 
         this.people[this.currentPage] = response;  
   
@@ -61,8 +62,6 @@ export class PeopleComponent implements OnInit {
           console.log("url",element.url);
            this.saveInLocalStorage(element, element.url);
         });
-
-  
     });
   }
 
@@ -71,14 +70,10 @@ export class PeopleComponent implements OnInit {
   }
 
   private getData() {
-   console.log("getData: this.data[this.currentPage]: ",this.people[this.currentPage]);
-   console.log("getData: this.data: ",this.people)
    return this.people[this.currentPage];
   }
 
   private saveInLocalStorage(element, url) {
-    console.log("1element: ", element)  
-    console.log("1url: ", url)  
     localStorage.setItem(url, JSON.stringify(element));
   }
 

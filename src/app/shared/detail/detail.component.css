@@ -1,16 +1,44 @@
-/* .mat-dialog-content {
-    background-color: black;
-    color: darkgoldenrod
-} */
-/* .my-panel  {
-    background-color: black;
-    color: darkgoldenrod
-} */
+.mat-dialog-content {
+    width:500px;
+}
 
 .mat-card {
-    color: black
+    background-color: black;
+    color: darkgoldenrod;
 }
 
 li {
-    color:black
+    color:darkgoldenrod
+}
+
+.display {
+    display:block;
+}
+
+.hide {
+    display: none
+}
+.show {
+    border: 2px solid darkgoldenrod;
+}
+
+.mat-dialog-actions.button {
+    border: 2px solid darkgoldenrod;
+}
+
+.mat-dialog-actions {
+    display:flex;
+    justify-content:flex-end;
+    align-items:center; 
+}
+
+.menu {
+    padding: 5px;
+    margin:5px;
+}
+
+.mat-raised-button {
+    background-color: black;
+    color: darkgoldenrod;
+    border: 2px solid darkgoldenrod
 }

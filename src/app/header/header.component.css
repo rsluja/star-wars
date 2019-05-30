@@ -1,10 +1,41 @@
 header {
     color:white;
-    /* background-color: black; */
     display: inline-flex
 }
 img {
-    width: 250px;
+    width: 445px;
     height: 250px;
     opacity: 0.5;
 }
+nav {
+    display: inline-grid;
+    align-content: center;
+    justify-content: space-around;
+    padding: 10px;
+    margin: 10px;
+}
+
+ul li {
+    display: inline-flex;
+    background-color: black;
+    padding: 8px;
+    margin: 10px 10px 10px 10px;
+    border: 2px solid gray;
+    top: 19px;
+    color: gray
+}
+
+li {
+    list-style-type: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+ul li:hover {
+    background-color: darkgoldenrod;
+    color: black;
+}
+
+.active {
+    color: rgb(245, 167, 0);
+  }

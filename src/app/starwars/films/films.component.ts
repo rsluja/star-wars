@@ -15,7 +15,7 @@ export class FilmsComponent implements OnInit {
   selectedRow = 0;
   currentPage = 1;
   displayedColumns: string[] = [
-    'title', 'episode_id', 'opening_crawl', 'release_date'
+    'title', 'episode_id', 'release_date'
   ];
   
   filmsDetailsDialogRef: MatDialogRef<FilmsDetailsComponent>;
@@ -23,9 +23,7 @@ export class FilmsComponent implements OnInit {
   constructor(public dialog: MatDialog,
               public http: HttpClient) {
 
-    // odczyt danych z cache - localStorage
-    this.readFromLocalStorage();
-    
+    this.readFromLocalStorage(); 
   }
 
   ngOnInit() {
@@ -34,8 +32,6 @@ export class FilmsComponent implements OnInit {
 
   openDialog($event): void {
     this.selectedRow = $event;
-    console.log("this.selectedRow:", this.selectedRow)
-    console.log("this.films[this.currentPage].results:", this.films[this.currentPage].results)
     this.filmsDetailsDialogRef = this.dialog.open(FilmsDetailsComponent, {
       data: {results: this.films[this.currentPage].results, index: this.selectedRow},
       panelClass: 'my-panel'
@@ -44,7 +40,6 @@ export class FilmsComponent implements OnInit {
     this.filmsDetailsDialogRef.afterClosed().subscribe(() => {
       this.dialog.closeAll();
     });
-   
   }
 
   fetchPage(page, category = 'films') {
@@ -59,7 +54,6 @@ export class FilmsComponent implements OnInit {
         this.saveFilmDataObjectInLocalStorage(page);
 
         this.films[this.currentPage].results.forEach(element => {
-          console.log("url",element.url);
            this.saveInLocalStorage(element, element.url);
         });
     });
@@ -69,14 +63,9 @@ export class FilmsComponent implements OnInit {
     this.fetchPage($event.pageIndex + 1)
   }
 
-  
-  
   private getData() {
-    console.log("getData: this.data[this.currentPage]: ",this.films[this.currentPage]);
-    console.log("getData: this.data: ",this.films)
     return this.films[this.currentPage];
-   }
-
+  }
   
   private saveInLocalStorage(element, url) {
     localStorage.setItem(url, JSON.stringify(element));

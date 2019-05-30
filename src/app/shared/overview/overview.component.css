@@ -7,26 +7,57 @@ mat-spinner {
 mat-form-field {
     font-size: 14px;
     width: 100%;
-  }
+}
+
+mat-paginator {
+    background-color: black;
+    color: gray;
+}
 
 .mat-table {
-   opacity:0.5
+   background: transparent;
 }
 
 .mat-row:nth-child(even){
   background-color:black;
+  border: 2px solid gray
 }
 
 .mat-row:nth-child(odd){
-    background-color:gray;
+    background-color:black;
+    border: 2px solid gray;
+    background: transparent;
 }
 
 .mat-header-row:nth-child(odd){
-    background-color:gray;
+    background-color:black;
+    border: 2px solid gray;
+    background: transparent;
 }
 .mat-cell {
-    color: darkgoldenrod
+    color: gray;
+    background: transparent;
 }
 .mat-header-cell {
+    color: gray;
+    font-weight: bold;
+    font-size: 18px;
+    background: transparent;
+}
+
+footer {
+    background-color: gray;
     color: white;
+    height: 0px;
+} 
+ 
+ img {
+    bottom: 50px;
+    width: 486px;
+    height: 250px;
+    position: relative;
+    opacity: 0.5;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

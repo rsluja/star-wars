@@ -2,22 +2,29 @@
     <img src="../../assets/img/logo.jpg" >
   <nav>
     <ul>
-      <li routerLink="/">
-        Person
+      <li routerLink="/" 
+      routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact:true}">
+        People
       </li>
-      <li routerLink="/planets">
+      <li routerLink="/planets" 
+      routerLinkActive="active">
         Planets
       </li>
-      <li routerLink="/films">
+      <li routerLink="/films" 
+      routerLinkActive="active">
         Films
       </li>
-      <li routerLink="/species">
+      <li routerLink="/species" 
+      routerLinkActive="active">
         Species
       </li>
-      <li routerLink="/vehicles">
+      <li routerLink="/vehicles" 
+      routerLinkActive="active">
         Vehicles
       </li>
-      <li routerLink="/starships">
+      <li routerLink="/starships" 
+      routerLinkActive="active">
         Starships
       </li>
     </ul>

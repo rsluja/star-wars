@@ -32,7 +32,8 @@ export class PlanetComponent implements OnInit {
     this.selectedRow = $event;
    
     this.planetDetailsDialogRef = this.dialog.open(PlanetDetailsComponent, {
-      data: {results: this.planets[this.currentPage].results, index: this.selectedRow}
+      data: {results: this.planets[this.currentPage].results, index: this.selectedRow},
+      panelClass: 'my-panel'
     });
 
     this.planetDetailsDialogRef.afterClosed().subscribe(() => {
@@ -50,11 +51,9 @@ export class PlanetComponent implements OnInit {
     this.http.get(`https://swapi.co/api/${category}/?page=${page}`).subscribe(response => {
         this.planets[this.currentPage] = response;
 
-        console.log("fetch: this.data[this.currentPage]: ",this.planets[this.currentPage])
         this.savePeopleDataObjectInLocalStorage(page)
 
         this.planets[this.currentPage].results.forEach(element => {
-          console.log("url",element.url);
            this.saveInLocalStorage(element, element.url);
         });
 
@@ -66,24 +65,16 @@ export class PlanetComponent implements OnInit {
   }
   
   private getData() {
-    console.log("getData: this.data[this.currentPage]: ",this.planets[this.currentPage]);
-    console.log("getData: this.data: ",this.planets)
     return this.planets[this.currentPage];
    }
-
   
    private saveInLocalStorage(element, url) {
-    console.log("1element: ", element)  
-    console.log("1url: ", url)  
     localStorage.setItem(url, JSON.stringify(element));
   }
-
-
 
   private savePeopleDataObjectInLocalStorage(page) {
     localStorage.setItem('planets, page '+page, JSON.stringify(this.planets));
   }
-
 
   readFromLocalStorage() {
     const planetsFromCache = JSON.parse(localStorage.getItem('planets, page '+this.currentPage));

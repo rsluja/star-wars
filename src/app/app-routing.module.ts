@@ -64,32 +64,17 @@ const routes: Routes = [
     },
     {
       path: 'vehicles',
-      component: VehicleComponent,
-      children: [
-        {
-        path: ':id',
-        component: VehicleDetailsComponent
-        }
-      ]
+      component: VehicleComponent
     },
     {
       path: 'starships',
       component: StarshipsComponent,
-      children: [
-        {
-        path: ':id',
-        component: StarshipsDetailsComponent
-        }
-      ]
     },
-        {
-      path: '404',
-      component: ErrorComponent
-    },
-    // {
-    //   path: '**',
-    //   redirectTo: '/404'
-    // }
+     
+    {
+      path: '**',
+      component: ErrorComponent,
+    }
   ];
   
   @NgModule({
